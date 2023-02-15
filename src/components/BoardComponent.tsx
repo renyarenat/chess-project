@@ -1,12 +1,24 @@
 import React from 'react'
+import { type Board } from '../models/Board'
+import CellComponent from './CellComponent'
 
-export default function BoardComponent (): JSX.Element {
+interface BoardProps {
+  board: Board
+  setBoard: (board: Board) => void
+}
+
+const BoardComponent: FC<BoardProps> = ({ board, setBoard }) => {
   return (
     <div className='board'>
-        <div className="cell white"></div>
-        <div className="cell black"></div>
-        <div className="cell white"></div>
-        <div className="cell black"></div>
+      {board.cells.map((row, index) =>
+      <React.Fragment key={index}>
+        {row.map(cell =>
+          <CellComponent />
+        )}
+      </React.Fragment>
+      )}
     </div>
   )
 }
+
+export default BoardComponent
