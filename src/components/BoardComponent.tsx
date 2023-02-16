@@ -7,13 +7,13 @@ interface BoardProps {
   setBoard: (board: Board) => void
 }
 
-const BoardComponent: FC<BoardProps> = ({ board, setBoard }) => {
+function BoardComponent ({ board, setBoard }: BoardProps): JSX.Element {
   return (
     <div className='board'>
       {board.cells.map((row, index) =>
       <React.Fragment key={index}>
         {row.map(cell =>
-          <CellComponent />
+          <CellComponent cell={cell} key={cell.id}/>
         )}
       </React.Fragment>
       )}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import BoardComponent from './components/BoardComponent'
+import { Board } from './models/Board'
 
 function App (): JSX.Element {
   const [board, setBoard] = useState(new Board())
@@ -9,8 +10,8 @@ function App (): JSX.Element {
     restart()
   }, [])
 
-  function restart () {
-    const newBoard = newBoard()
+  function restart (): void {
+    const newBoard = new Board()
     newBoard.initCells()
     setBoard(newBoard)
   }

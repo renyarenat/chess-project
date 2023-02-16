@@ -1,7 +1,12 @@
 import React from 'react'
+import { type Cell } from '../models/Cell'
 
-export default function CellComponent (): JSX.Element {
+interface CellProps {
+  cell: Cell
+}
+
+export default function CellComponent ({ cell }: CellProps): JSX.Element {
   return (
-    <div className='cell'></div>
+    <div className={['cell', cell.color].join(' ')}></div>
   )
 }
