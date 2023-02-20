@@ -12,7 +12,10 @@ function BoardComponent ({ board, setBoard }: BoardProps): JSX.Element {
   const [selectedCell, setSelectedCell] = useState<Cell | null>(null)
 
   function click (cell: Cell): void {
-    if (cell.figure != null) {
+    if ((selectedCell != null) && selectedCell !== cell && ((selectedCell.figure?.canMove(cell)) ?? false)) {
+      selectedCell.moveFigure(cell)
+      setSelectedCell(null)
+    } else {
       setSelectedCell(cell)
     }
   }
