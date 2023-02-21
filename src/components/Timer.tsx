@@ -44,7 +44,7 @@ const Timer = ({ currentPlayer, restart }: TimerProps): JSX.Element => {
                 <button onClick={handleRestart}>Restart Game</button>
             </div>
             <h2>Черные - {blackTime}</h2>
-            <h2>Черные - {whiteTime}</h2>
+            <h2>Белые - {whiteTime}</h2>
         </div>
   )
 }
