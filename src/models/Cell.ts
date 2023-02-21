@@ -1,5 +1,5 @@
 import { type Board } from './Board'
-import { type Colors } from './Colors'
+import { Colors } from './Colors'
 import { type Figure } from './figures/Figure'
 
 export class Cell {
@@ -158,9 +158,18 @@ export class Cell {
     this.figure!.cell = this
   }
 
+  addLostFigure (figure: Figure): void {
+    figure.color === Colors.BLACK
+      ? this.board.lostBlackFigures.push(figure)
+      : this.board.lostWhiteFigures.push(figure)
+  }
+
   moveFigure (target: Cell): void {
     if ((this.figure?.canMove(target)) ?? false) {
       this.figure?.moveFigure(target)
+      if (target.figure != null) {
+        this.addLostFigure(target.figure)
+      }
       target.setFigure(this.figure)
       this.figure = null
     }
