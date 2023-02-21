@@ -36,7 +36,7 @@ export class Board {
       const row = this.cells[i]
       for (let j = 0; j < this.cells.length; j++) {
         const target = row[j]
-        target.available = !((selectedCell?.figure?.canMove(target)) === false)
+        target.available = !!((selectedCell?.figure?.canMove(target)) ?? false)
       }
     }
   }

@@ -15,6 +15,7 @@ function BoardComponent ({ board, setBoard }: BoardProps): JSX.Element {
     if ((selectedCell != null) && selectedCell !== cell && ((selectedCell.figure?.canMove(cell)) ?? false)) {
       selectedCell.moveFigure(cell)
       setSelectedCell(null)
+      updateBoard()
     } else {
       setSelectedCell(cell)
     }
